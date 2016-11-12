@@ -7,9 +7,9 @@ gem 'rails', '3.2.22.3'
 
 group :development do
   gem 'mysql2' , '~> 0.3.10'
-  gem 'rspec-rails', '2.11.0'
   gem 'annotate','2.5.0'
   gem 'bcrypt-ruby', '~>3.0.1'
+  gem 'brakeman', require: false
 end
 
 gem 'bootstrap-sass', '2.1'
