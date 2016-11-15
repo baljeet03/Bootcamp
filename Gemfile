@@ -12,6 +12,8 @@ group :development do
   gem 'brakeman', require: false
 end
 
+gem 'will_paginate', '~> 3.1.1'
+gem "dynamic_form"
 gem 'bootstrap-sass', '2.1'
 
 group :test do

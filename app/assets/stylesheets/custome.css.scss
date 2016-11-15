@@ -1,0 +1,93 @@
+@import "bootstrap";
+@import "bootstrap-responsive";
+
+/*form*/
+
+@mixin box_sizing {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  @include box_sizing;
+}
+
+input {
+  height: auto !important;
+}
+
+.description{
+  height: 15em;
+  width: 40em;
+}
+.small_textArea{
+  width: 40em;
+  height: 3em;
+}
+
+/* Custom Style for the table*/
+.customizedTable{
+  $color : black;
+  background-color: #bbbbbb;
+  border: solid;
+  padding:3em 4em 3em 4em;
+}
+
+.tableHeading{
+  $color: black;
+  font-weight: 800;
+  background-color: lightblue;
+  font-size: large;
+  border: solid 0.1em black;
+  font-family: Monaco, "Andale Mono", "Times New Roman", SansSerif;
+}
+
+td.head{
+  border: solid 0.1em black;
+}
+td.inside {
+  color: black;
+  font-family: "Trebuchet MS", "Inconsolata", "SansSerif", "Times New Roman", Monaco, "Andale Mono";
+  font-size: medium;
+  border: groove 0.1em black;
+  font-weight: lighter;
+}
+
+// priority color
+
+.priorityColor{
+  font-weight: bold;
+  font-size: 1.3em;
+}
+
+//task status
+
+.taskStatus{
+  font-weight: bold;
+  font-size:1.3em;
+}
+
+// customize show page
+
+.showPagePadding{
+  padding: 1em 1em 1em 1em;
+}
+
+.showPageHeading{
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1.2em;
+  font-family: "Helvetica Neue", Arial, "Lucida Grande", sans-serif;
+  color: darkblue;
+}
+
+.showPageBody{
+  font-weight: 100;
+  font-style: italic;
+  font-family: "Trebuchet MS", "Inconsolata", "SansSerif", "Times New Roman", Monaco, "Andale Mono";
+  color: lightcoral;
+}

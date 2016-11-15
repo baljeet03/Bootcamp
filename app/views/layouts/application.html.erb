@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Project</title>
+  <%= yield(:title) %>
+
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
+<ul class="nav nav-pills">
+  <%#	<li role="presentation" class="active"><%= link_to "Active Task" , show_path %><%#</li> %>
+  <li role="presentation"><%=	link_to "Completed Task" , '/tasks' %></li>
+  <li class="pull-right" ><%=link_to "Create task", "/tasks/new" %></li>
+</ul>
+
 <%= yield %>
+
 
 </body>
 </html>

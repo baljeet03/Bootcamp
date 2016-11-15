@@ -1,0 +1,43 @@
+<table class="table table-hover">
+  <thead class="tableHeading">
+  <tr>
+    <td class="head">
+      Task Name
+    </td>
+    <td class="head">
+      Task Description
+    </td>
+    <td class="head">
+      Priority
+    </td>
+    <td class="head">
+      Deadline
+    </td>
+    <td class="head">
+    </td>
+  </tr>
+  </thead>
+  <tbody>
+  <%	@tasks.each do |task| %>
+      <tr data-link="<%= "tasks/"+task.id.to_s %>">
+        <td class="inside">
+          <%= task.title %>
+        </td>
+        <td class="inside">
+          <%= task.description %>
+        </td>
+        <td class="inside">
+          <%= task.priority %>
+        </td>
+        <td class="inside">
+          <%= datePrint(task.deadline) %>
+        </td>
+        <td class="inside">
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+  </table>
+
+<%= will_paginate @tasks, :renderer => PaginationListLinkRenderer %>
+

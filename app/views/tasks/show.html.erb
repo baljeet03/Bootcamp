@@ -1,0 +1,49 @@
+<!--<p id="notice"><%= notice %></p>-->
+<div class="container-fluid">
+  <div class="btn btn-default pull-right">
+    <% if @task.status == "active" %>
+        <%= link_to "Close Task", "changeStatus/#{@task.id}" %>
+    <% end %>
+    <% if @task.status =="inactive" %>
+        <%= link_to "Open Task", "changeStatus/#{@task.id}" %>
+    <% end %>
+  </div>
+  <div class="container">
+    <div class="showPageHeading container-fluid">
+      <h2>Task Details</h2>
+    </div>
+    <div class="container-fluid showPageHeading showPagePadding">
+      Task Name
+    </div>
+    <div class="showPageBody borderDuringDisplay container-fluid">
+      <span class="small_textArea"><%= @task.title %></span>
+    </div>
+    <div class="container-fluid showPageHeading showPagePadding">
+      Description
+    </div>
+    <div class="showPageBody borderDuringDisplay container-fluid">
+      <span class="description"><%= @task.description %></span>
+    </div>
+    <div class="container-fluid showPageHeading showPagePadding">
+      Priority
+    </div>
+    <div class="showPageBody borderDuringDisplay container-fluid">
+        <span class="priorityColor"><%= @task.priority %></span>
+    </div>
+    <div class="container-fluid showPageHeading showPagePadding">
+      Deadline
+    </div>
+    <div class="showPageBody borderDuringDisplay container-fluid">
+        <span><%= datePrint(@task.deadline) %></span>
+    </div>
+    <div class="container-fluid showPageHeading showPagePadding">
+      status
+    </div>
+    <div class="showPageBody borderDuringDisplay container-fluid">
+        <span class="taskStatus"><%= @task.status %> </span>
+    </div>
+  </div>
+</div>
+<div class="btn btn-default pull-right container-fluid">
+  <%= link_to "Edit Task", edit_task_path(@task.id) %>
+</div>

@@ -1,4 +1,14 @@
 Project::Application.routes.draw do
+
+  match 'tasks/:id' => 'tasks#show', :as => :show
+  match 'tasks/:id/edit' => 'tasks#edit', :as => :task, :via => :get
+  match 'tasks/:id/edit' => 'tasks#update', :as=> :edit_task, :via => :put
+  resource :tasks
+  root :to => "tasks#index"
+
+  # match '/show' => 'tasks#show'
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

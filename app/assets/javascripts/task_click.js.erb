@@ -1,0 +1,20 @@
+$(document).ready(function () {
+  $("tr[data-link]").click(function () {
+    return false;
+  }).dblclick(function () {
+    window.location = $(this).data("link");
+  });
+
+  // change the priority color based on priority
+  var x = document.getElementsByClassName("priorityColor");
+  var color = ["Red", "lightcoral", "lightskyblue","grey"];
+  var priority = ["Urgent", "High", "Medium", "Low"];
+  x[0].style.color = color[priority.indexOf(x[0].innerHTML.toString())];
+
+  //change the status color based on status
+  var y = document.getElementsByClassName("taskStatus");
+  color = ["green", "Red"];
+  var status = ["active", "inactive"];
+  y[0].style.color = color[status.indexOf(y[0].innerHTML.toString().trim())]
+
+});
