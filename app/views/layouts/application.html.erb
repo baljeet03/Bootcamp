@@ -12,7 +12,7 @@
 <ul class="nav nav-pills">
   <%#	<li role="presentation" class="active"><%= link_to "Active Task" , show_path %><%#</li> %>
   <li role="presentation"><%=	link_to "Completed Task" , '/tasks' %></li>
-  <li class="pull-right" ><%=link_to "Create task", "/tasks/new" %></li>
+  <li class="pull-right" ><%=link_to "Create task", new_tasks_path() %></li>
 </ul>
 
 <%= yield %>
