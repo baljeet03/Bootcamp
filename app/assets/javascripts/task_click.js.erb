@@ -4,11 +4,23 @@ $(document).ready(function () {
   }).dblclick(function () {
     window.location = $(this).data("link");
   });
+});
 
+//toggle the state of buttons
+//$(document).ready(function() {
+//  $('ul li').click( function() {
+//    $(this).addClass('active');
+//    $(this).siblings.removeClass('active');
+//  });
+//});
+
+$(document).ready(function () {
   // change the priority color based on priority
   var x = document.getElementsByClassName("priorityColor");
   var color = ["Red", "lightcoral", "lightskyblue","grey"];
   var priority = ["Urgent", "High", "Medium", "Low"];
+  // if the doc is not present
+  if(!x || !x.style)return;
   x[0].style.color = color[priority.indexOf(x[0].innerHTML.toString())];
 
   //change the status color based on status

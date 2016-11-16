@@ -3,6 +3,9 @@ Project::Application.routes.draw do
   match '/new' => 'tasks#new'
   match 'tasks/:id/edit' => 'tasks#edit', :as => :task, :via => :get
   match 'tasks/:id/edit' => 'tasks#update', :as=> :edit_task, :via => :put
+  resource :tasks do
+    match 'filter/:status' => 'tasks#filter', :as => :filter_on_status
+  end
   resource :tasks
   root :to => "tasks#index"
   match 'tasks/:id' => 'tasks#show', :as => :show

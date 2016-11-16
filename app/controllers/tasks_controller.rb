@@ -53,6 +53,11 @@ class TasksController < ApplicationController
     else render 'tasks/edit'
     end
   end
+
+  def filter
+    @tasks = Task.where(:status => params[:status])
+    @tasks = @tasks.paginate(:page => params[:page],:per_page => 10)
+  end
   #
   # # DELETE /tasks/1
   # # DELETE /tasks/1.json

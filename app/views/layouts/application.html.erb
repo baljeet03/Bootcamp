@@ -9,10 +9,13 @@
 </head>
 <body>
 
+<div class="pull-right">
+  <%=link_to "Create task", new_tasks_path() %>
+</div>
 <ul class="nav nav-pills">
-  <%#	<li role="presentation" class="active"><%= link_to "Active Task" , show_path %><%#</li> %>
-  <li role="presentation"><%=	link_to "Completed Task" , '/tasks' %></li>
-  <li class="pull-right" ><%=link_to "Create task", new_tasks_path() %></li>
+  <li class="<%= :active if current_page? root_path %>"><%= link_to "All Task" , root_path %></li>
+  <li class="<%= :active if current_page? filter_on_status_tasks_path("active") %>"><%= link_to "Open Task" , filter_on_status_tasks_path("active") %></li>
+  <li class="<%= :active if current_page? filter_on_status_tasks_path("inactive") %>"><%= link_to "Completed Task" , filter_on_status_tasks_path("inactive") %></li>
 </ul>
 
 <%= yield %>
