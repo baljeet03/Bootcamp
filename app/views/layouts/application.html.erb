@@ -1,24 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <%= yield(:title) %>
 
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<div class="pull-right">
-  <%=link_to "Create task", new_tasks_path() %>
+<div>
+  <div class="pull-right btn">
+    <%= link_to "Create task", new_tasks_path() %>
+  </div>
+  <ul class="btn nav nav-pills">
+    <li class="<%= :active if params[:status] == "active" %>"><%= link_to "Open Task" , filter_on_status_tasks_path("active") %></li>
+    <li class="<%= :active if params[:status] == "inactive" %>"><%= link_to "Completed Task" , filter_on_status_tasks_path("inactive") %></li>
+  </ul>
 </div>
-<ul class="nav nav-pills">
-  <li class="<%= :active if current_page? root_path %>"><%= link_to "All Task" , root_path %></li>
-  <li class="<%= :active if current_page? filter_on_status_tasks_path("active") %>"><%= link_to "Open Task" , filter_on_status_tasks_path("active") %></li>
-  <li class="<%= :active if current_page? filter_on_status_tasks_path("inactive") %>"><%= link_to "Completed Task" , filter_on_status_tasks_path("inactive") %></li>
-</ul>
 
-<%= yield %>
+<%= yield   %>
 
 
 </body>

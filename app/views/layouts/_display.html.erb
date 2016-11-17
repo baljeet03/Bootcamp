@@ -1,3 +1,15 @@
+<div class="nav pull-right dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Sort By
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <%= link_to "Priority: Low to Urgent", sort_by_priority_tasks_path(params[:status], "asc") %>
+    <%= link_to "Priority: Urgent to Low", sort_by_priority_tasks_path(params[:status], "desc") %>
+    <%= link_to "Deadline: near", sort_by_deadline_tasks_path(params[:status], "asc") %>
+    <%= link_to "Deadline: far", sort_by_deadline_tasks_path(params[:status], "desc") %>
+  </div>
+</div>
+
 <table class="table table-hover">
   <thead class="tableHeading">
   <tr>
@@ -19,7 +31,7 @@
   </thead>
   <tbody>
   <%	@tasks.each do |task| %>
-      <tr data-link="<%= "tasks/"+task.id.to_s %>">
+      <tr data-link="<%= show_path(task.id) %>">
         <td class="inside">
           <%= task.title %>
         </td>

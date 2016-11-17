@@ -4,7 +4,10 @@ Project::Application.routes.draw do
   match 'tasks/:id/edit' => 'tasks#edit', :as => :task, :via => :get
   match 'tasks/:id/edit' => 'tasks#update', :as=> :edit_task, :via => :put
   resource :tasks do
-    match 'filter/:status' => 'tasks#filter', :as => :filter_on_status
+    match 'filter/:status' => 'tasks#filter', :as => :filter_on_status, :via => [:get]
+    match 'changeStatus/:id' => 'tasks#changeStatus', :as => :change_status, :via => [:get, :put]
+    match 'sortByPriority/:status/:ordering' => 'tasks#sortPriority', :as => :sort_by_priority
+    match 'sortByDeadline/:status/:ordering' => 'tasks#sortDeadline', :as => :sort_by_deadline
   end
   resource :tasks
   root :to => "tasks#index"

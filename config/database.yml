@@ -40,5 +40,5 @@ production:
   database: project_production
   pool: 5
   username: root
-  password:
+  password: 1234
   socket: /tmp/mysql.sock

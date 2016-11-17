@@ -1,14 +1,13 @@
-<!--<p id="notice"><%= notice %></p>-->
 <div class="container-fluid">
   <div class="btn btn-default pull-right">
     <% if @task.status == "active" %>
-        <%= link_to "Close Task", "changeStatus/#{@task.id}" %>
+        <%= link_to "Close Task", change_status_tasks_path(@task.id) %>
     <% end %>
     <% if @task.status =="inactive" %>
-        <%= link_to "Open Task", "changeStatus/#{@task.id}" %>
+        <%= link_to "Open Task", change_status_tasks_path(@task.id) %>
     <% end %>
   </div>
-  <div class="container">
+  <div class=" container">
     <div class="showPageHeading container-fluid">
       <h2>Task Details</h2>
     </div>

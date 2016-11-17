@@ -6,21 +6,14 @@ $(document).ready(function () {
   });
 });
 
-//toggle the state of buttons
-//$(document).ready(function() {
-//  $('ul li').click( function() {
-//    $(this).addClass('active');
-//    $(this).siblings.removeClass('active');
-//  });
-//});
-
 $(document).ready(function () {
   // change the priority color based on priority
   var x = document.getElementsByClassName("priorityColor");
   var color = ["Red", "lightcoral", "lightskyblue","grey"];
   var priority = ["Urgent", "High", "Medium", "Low"];
   // if the doc is not present
-  if(!x || !x.style)return;
+
+  if(!x || !x[0] || !x[0].style)return;
   x[0].style.color = color[priority.indexOf(x[0].innerHTML.toString())];
 
   //change the status color based on status
@@ -29,4 +22,15 @@ $(document).ready(function () {
   var status = ["active", "inactive"];
   y[0].style.color = color[status.indexOf(y[0].innerHTML.toString().trim())]
 
+});
+
+// dropdown on click action
+
+$(document).ready(function () {
+  $('.dropdown').click(function () {
+    if($(this).hasClass('open')){
+      $(this).removeClass('open');
+    }
+    else $(this).addClass('open')
+  });
 });
