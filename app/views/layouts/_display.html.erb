@@ -1,13 +1,21 @@
-<div class="nav pull-right dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+<div class="dropdown pull-right">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
     Sort By
+    <i class="fa fa-sort"></i>
   </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <%= link_to "Priority: Low to Urgent", sort_by_priority_tasks_path(params[:status], "asc") %>
-    <%= link_to "Priority: Urgent to Low", sort_by_priority_tasks_path(params[:status], "desc") %>
-    <%= link_to "Deadline: near", sort_by_deadline_tasks_path(params[:status], "asc") %>
-    <%= link_to "Deadline: far", sort_by_deadline_tasks_path(params[:status], "desc") %>
-  </div>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    <li><%= link_to "Priority: Low to Urgent", sort_by_priority_tasks_path(params[:status], "asc") %></li>
+    <li>
+      <%= link_to "Priority: Urgent to Low", sort_by_priority_tasks_path(params[:status], "desc") %>
+    </li>
+    <li>
+      <%= link_to "Deadline: near", sort_by_deadline_tasks_path(params[:status], "asc") %>
+    </li>
+    <li>
+      <%= link_to "Deadline: far", sort_by_deadline_tasks_path(params[:status], "desc") %>
+    </li>
+  </ul>
 </div>
 
 <table class="table table-hover">
@@ -30,7 +38,7 @@
   </tr>
   </thead>
   <tbody>
-  <%	@tasks.each do |task| %>
+  <% @tasks.each do |task| %>
       <tr data-link="<%= show_path(task.id) %>">
         <td class="inside">
           <%= task.title %>

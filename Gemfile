@@ -6,8 +6,8 @@ gem 'rails', '3.2.22.3'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 group :development, :production do
-  gem 'mysql2' , '~> 0.3.10'
-  gem 'annotate','2.5.0'
+  gem 'mysql2', '~> 0.3.10'
+  gem 'annotate', '2.5.0'
   gem 'bcrypt-ruby', '~>3.0.1'
   gem 'brakeman', require: false
 end
@@ -19,11 +19,14 @@ gem 'will_paginate', '~> 3.1.1'
 gem "dynamic_form"
 
 #bootstrap framework gem
-gem 'bootstrap-sass', '2.1'
+gem 'bootstrap-sass', '3.1.1.0'
+
+#gritter for notification
+gem "gritter", "0.6.3"
 
 #font-awesome to be used in boostrap
 gem 'font-awesome-rails'
-gem 'font-awesome-sass'
+
 group :test do
   #rspec for writing specifications
   gem 'rspec-rails', '2.11.0'
@@ -36,7 +39,7 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
+  gem 'sass-rails', '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
@@ -46,6 +49,9 @@ group :assets do
 end
 
 gem 'jquery-rails'
+
+# for mail devlivery
+gem 'mail'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

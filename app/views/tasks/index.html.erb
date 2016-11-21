@@ -1,0 +1,44 @@
+<div class="home_elements">
+  <i class="fa fa-eye" aria-hidden="true"></i>
+  <%= link_to "Task View", filter_on_status_tasks_path("active") %>
+  </div>
+<div class="home_elements">
+  <i class="fa fa-plus" aria-hidden="true"></i>
+  <%= link_to "Create task", new_tasks_path() %>
+</div>
+<div class="home_elements">
+  <i class="fa fa-cog settings" aria-hidden="true"></i>
+  <%= link_to "Settings", "" %>
+</div>
+
+<div class="customForm container-fluid">
+  <%= form_tag "tasks/exportTask", :method => "post" do %>
+      <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>">
+          <%= value %>
+        </div>
+      <% end %>
+      <%= label_tag :inCSV, "CSV" %>
+      <%= radio_button_tag :type, "CSV"  %>
+      <br>
+      <br>
+      <%= label_tag :inXML, :"XML" %>
+      <%= radio_button_tag :type, "XML" %>
+      <br>
+      <br>
+      <div>
+        <i class="fa fa-download"></i>
+        <%= submit_tag 'download', class: "btn btn-large btn-primary col-xs-1" %>
+      </div>
+      <br>
+      <br>
+      <div>
+        <%= label_tag :emailFill, :"Enter Email" %>
+        <%= email_field_tag "email" %>
+        <br>
+        <br>
+        <i class="fa fa-send"></i>
+        <%= submit_tag "send", class: "btn btn-large btn-primary col-xs-1" %>
+      </div>
+  <% end %>
+</div>

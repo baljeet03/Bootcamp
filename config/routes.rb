@@ -8,6 +8,7 @@ Project::Application.routes.draw do
     match 'changeStatus/:id' => 'tasks#changeStatus', :as => :change_status, :via => [:get, :put]
     match 'sortByPriority/:status/:ordering' => 'tasks#sortPriority', :as => :sort_by_priority
     match 'sortByDeadline/:status/:ordering' => 'tasks#sortDeadline', :as => :sort_by_deadline
+    match 'exportTask' => 'tasks#exportTask', :as => :export
   end
   resource :tasks
   root :to => "tasks#index"

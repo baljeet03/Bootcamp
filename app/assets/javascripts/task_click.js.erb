@@ -27,10 +27,20 @@ $(document).ready(function () {
 // dropdown on click action
 
 $(document).ready(function () {
-  $('.dropdown').click(function () {
+  $('#dropdownMenu1').click(function () {
     if($(this).hasClass('open')){
-      $(this).removeClass('open');
+      $(this).removeClass('open')
     }
-    else $(this).addClass('open')
+    else {
+      $(this).addClass('open');
+    }
   });
 });
+
+
+// auto fade the flash message on success
+$(document).ready(function () {
+  $(".alert-success").fadeOut(3000);
+});
+
+

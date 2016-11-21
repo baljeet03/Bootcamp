@@ -1,1 +1,9 @@
+<ul class="nav nav-pills">
+  <li class="<%= :active if params[:status] == "active" %>">
+    <%= link_to "Open Task" , filter_on_status_tasks_path("active") %>
+  </li>
+  <li class="<%= :active if params[:status] == "inactive" %>">
+    <%= link_to "Completed Task" , filter_on_status_tasks_path("inactive") %>
+  </li>
+</ul>
 <%= render 'layouts/display' %>

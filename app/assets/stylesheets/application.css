@@ -11,6 +11,8 @@
  *= require_self
  *= require_tree
  *= require font-awesome.css.erb
+ *= require gritter
+ *= require bootstrap
  */
-@import "_bootstrap.scss";
-@import "_font-awesome.scss";
+
+@import "bootstrap";

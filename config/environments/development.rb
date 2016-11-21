@@ -14,7 +14,7 @@ Project::Application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
@@ -34,4 +34,18 @@ Project::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  # allow mail deliveries
+
+  config.action_mailer.perform_deliveries = true
+
+  # ses setting for sending the mails
+  config.action_mailer.smtp_settings = {
+      :address => "email-smtp.us-east-1.amazonaws.com",
+      :port => 25,
+      :user_name => "AKIAJ6QVGDNZ3VLY66JA", #Your SMTP user
+      :password => "AiX26dnU0z4BQySxojYBdqcYH5m8M4V0DA2g79tQqVkP", #Your SMTP password
+      :authentication => :login,
+      :enable_starttls_auto => true
+  }
 end

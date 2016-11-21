@@ -1,37 +1,50 @@
-<h2 class="offset1"> <%= yield(:title) %></h2>
-<div class="span8 offset2">
-  <%= form_for(@task) do |f| %>
+<h2>
+  <%= yield(:title) %>
+</h2>
+<br>
+<%= form_for(@task) do |f| %>
 
-      <%= f.error_messages :header_messages => "Invalid", :message => "Please fill the data matching requirements" %>
-      <%= f.label "Task Name" %>
-      <%= f.text_field :title %>
+    <%= f.error_messages :header_messages => "Invalid", :message => "Check the errors" %>
+    <%= f.label "Task Name", :class => "col-xs-2 col-form-label" %>
+    <div class="form-group row">
+      <%= f.text_field :title, :class => "col-xs-4", :placeholder => "Enter task Name" %>
+    </div>
 
-      <%= f.label :description %>
-      <%= f.text_area :description, class: "description" %>
+    <%= f.label :description, :class => "col-xs-2 col-form-label" %>
+    <div class="form-group row">
+      <%= f.text_area :description, class: "col-xs-4 description", :placeholder => "Enter the description" %>
+    </div>
 
-      <%= f.label :deadline %>
-      <%= f.date_select :deadline, :order => [:day, :month, :year], :prompt => true%>
-      <br>
+    <%= f.label :deadline, :class => "col-xs-1 col-form-label" %>
+    <div class="customForm">
+      <%= f.date_select :deadline,
+                        :order => [:day, :month, :year], :prompt => true, :class => "col-xs-4 form-control" %>
+    </div>
+    <br>
 
-      <%= f.label :reminderDate %>
-      <%= f.date_select :reminderDate, :order => [:day, :month, :year], :prompt => true %>
-      <br>
+    <%= f.label :reminderDate, :class => "col-xs-1 col-form-label" %>
+    <div class="customForm">
+      <%= f.date_select :reminderDate,
+                        :order => [:day, :month, :year], :prompt => true, :class => "col-md-1 form-control" %>
+    </div>
+    <br>
 
-      <div style="display:inline">
-        <%= f.radio_button :priority,"Urgent" %>
-        <%= f.label :priority, "Urgent" %>
+    <%= f.label "Priority", :class =>"col-xs-1 col-form-label" %>
+    <div class="customForm">
+      <%= f.radio_button :priority,"Urgent", :class => "form-check-inline" %>
+      <%= f.label :priority, "Urgent", :class => "form-check-input" %>
 
-        <%= f.radio_button :priority,"High" %>
-        <%= f.label :priority, "High" %>
+      <%= f.radio_button :priority,"High", :class => "form-check-inline" %>
+      <%= f.label :priority, "High", :class => "form-check-input" %>
 
-        <%= f.radio_button :priority,"Medium" %>
-        <%= f.label :priority, "Medium" %>
+      <%= f.radio_button :priority,"Medium", :class => "form-check-inline" %>
+      <%= f.label :priority, "Medium", :class => "form-check-input" %>
 
-        <%= f.radio_button :priority,"Low" %>
-        <%= f.label :priority,"Low" %>
-      </div>
+      <%= f.radio_button :priority,"Low", :class => "form-check-inline" %>
+      <%= f.label :priority,"Low", :class => "form-check-input" %>
+    </div>
 
-      <%= f.submit yield(:submit) , class: "btn btn-large btn-primary" %>
-  <% end %>
-
-</div>
+    <div class="customForm">
+      <%= f.submit yield(:submit) , class: "btn btn-large btn-primary col-xs-10" %>
+    </div>
+<% end %>

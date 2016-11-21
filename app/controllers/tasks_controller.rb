@@ -1,11 +1,12 @@
+require 'mail'
 class TasksController < ApplicationController
 
   include TasksHelper
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.paginate(:page => params[:page], :per_page => 10)
-    redirect_to filter_on_status_tasks_path("active")
+    @input = {}
+    gflash :notice => "The product has been created successfully!"
   end
 
   # GET /tasks/1
@@ -91,6 +92,41 @@ class TasksController < ApplicationController
     @tasks = @tasks.paginate(:page => params[:page], :per_page => 10)
   end
 
+  def exportTask
+    @tasks = Task.order(:id)
+    if params[:type].nil?
+      flash[:warning] = "Choose one of the file formats"
+      flash.now
+    else
+      filename = "Task_Dump_"+Time.now.strftime("%d/%m/%Y %H:%M").to_s
+      if params[:commit] == "download"
+        if params[:type] == 'CSV'
+           send_data @tasks.to_csv, :filename => filename+".csv"
+        else
+          send_data @tasks.to_xml, :type => 'text/xml; charset=UTF-8;', :filename => filename+".xml"
+        end
+      else
+        if params[:email].blank?
+          flash[:warning] = "Please enter a valid email address"
+        else
+          begin
+            if params[:type] == 'CSV'
+              MyMailer.attached_doc_mail(params[:email], @tasks.to_csv, filename+".csv").deliver
+              flash[:success] = "Mail successfully sent"
+              flash.now
+            else
+              MyMailer.attached_doc_mail(params[:email], @tasks.to_xml, filename+".xml").deliver
+              flash[:success] = "Mail successfully sent"
+              flash.now
+            end
+          rescue Exception => e
+            flash[:danger] = "Problem in sending the mail , Please re-check your email address"
+          end
+        end
+      end
+    end
+    redirect_to root_path # redirect to root index after download or email got sent
+  end
   #
   # # DELETE /tasks/1
   # # DELETE /tasks/1.json
