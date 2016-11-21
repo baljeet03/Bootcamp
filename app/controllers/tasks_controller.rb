@@ -67,11 +67,13 @@ class TasksController < ApplicationController
   # PUT /tasks/changeStatus/1
   def changeStatus
     @task = Task.find_by_id(params[:id])
-    @task.status = if @task.status == "inactive" then
-                     "active"
-                   else
-                     "inactive"
-                   end
+
+    if params[:format].nil?
+      @task.status = if @task.status == "inactive" then "active" else "inactive" end
+    else
+      @task.status = "archived"
+    end
+
     if @task.update_attributes(params[:task])
       redirect_to root_path
     else
@@ -97,11 +99,12 @@ class TasksController < ApplicationController
     if params[:type].nil?
       flash[:warning] = "Choose one of the file formats"
       flash.now
+      redirect_to root_path # redirect to root index if no radio button was selected
     else
       filename = "Task_Dump_"+Time.now.strftime("%d/%m/%Y %H:%M").to_s
       if params[:commit] == "download"
         if params[:type] == 'CSV'
-           send_data @tasks.to_csv, :filename => filename+".csv"
+          send_data @tasks.to_csv, :filename => filename+".csv"
         else
           send_data @tasks.to_xml, :type => 'text/xml; charset=UTF-8;', :filename => filename+".xml"
         end
@@ -122,10 +125,10 @@ class TasksController < ApplicationController
           rescue Exception => e
             flash[:danger] = "Problem in sending the mail , Please re-check your email address"
           end
+          redirect_to root_path # redirect to root index after email got sent
         end
       end
     end
-    redirect_to root_path # redirect to root index after download or email got sent
   end
   #
   # # DELETE /tasks/1

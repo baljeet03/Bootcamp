@@ -1,5 +1,8 @@
 <div class="container-fluid">
   <div class="btn btn-default pull-right">
+    <%= link_to "Archive Task", change_status_tasks_path(@task.id, formats = "deleted") %>
+  </div>
+  <div class="btn btn-default pull-right">
     <% if @task.status == "active" %>
         <%= link_to "Close Task", change_status_tasks_path(@task.id) %>
     <% end %>
