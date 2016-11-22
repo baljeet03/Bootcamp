@@ -49,7 +49,6 @@ group :assets do
 end
 
 gem 'jquery-rails'
-
 # for mail devlivery
 gem 'mail'
 

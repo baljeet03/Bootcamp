@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20161118091132) do
+ActiveRecord::Schema.define(:version => 20161122095553) do
+
+  create_table "notifications", :force => true do |t|
+    t.boolean  "notify"
+    t.datetime "reminder_date"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "task_id"
+  end
 
   create_table "tasks", :force => true do |t|
     t.string   "title"

@@ -1,0 +1,40 @@
+<table class="table table-hover">
+  <thead class="tableHeading">
+  <tr>
+    <td class="head">
+      Task Name
+    </td>
+    <td class="head">
+      Priority
+    </td>
+    <td class="head">
+      Deadline
+    </td>
+  </tr>
+  </thead>
+  <tbody>
+  <% @reminders.each do |task| %>
+      <tr data-swipe="<%= reminder_delete_path(task.id) %>">
+        <td class="inside">
+          <%= task.title %>
+        </td>
+        <td class="inside">
+          <%= task.priority %>
+        </td>
+        <td class="inside">
+          <%= datePrint(task.deadline) %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate @reminders, :renderer => PaginationListLinkRenderer %>
+
+<div class="btn btn-default pull-right">
+  <%= link_to "Clear All", reminder_clear_path %>
+</div>
+
+<% @reminders.each do |reminder| %>
+
+<% end %>

@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  notify: false
+  reminder_date: 2016-11-22 14:44:37
+
+two:
+  notify: false
+  reminder_date: 2016-11-22 14:44:37

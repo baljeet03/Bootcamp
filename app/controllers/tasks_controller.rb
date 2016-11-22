@@ -1,13 +1,35 @@
 require 'mail'
+require 'date'
 class TasksController < ApplicationController
 
   include TasksHelper
   # GET /tasks
   # GET /tasks.json
   def index
-    @input = {}
-    gflash :notice => "The product has been created successfully!"
+
+    # insert all the notification task for the present date in Notification Db
+    tasks = Task.where('status = "active" && reminderDate is not null')
+    date = DateTime.current
+    tasks = tasks.where(:reminderDate => date.beginning_of_day..date.end_of_day)
+    tasks.each do |task|
+      notify = Notification.find_by_task_id(task[:id])
+      if notify.nil?
+        notify = Notification.new(:task_id => task[:id], :notify => true, :reminder_date => task[:reminderDate])
+        notify.save
+      else
+        if notify[:reminder_date] != task[:reminderDate]
+          notify.update_attribute(:reminder_date, task[:reminderDate])
+          notify.update_attribute(:notify, true)
+          notify.save
+        end
+      end
+      task.update_attribute(:reminderDate, nil)
+    end
+    if Notification.count > 0
+      gflash :notice => {:value => Notification.count.to_s + " Task in pending state ", :title => "Reminder"}
+    end
   end
+
 
   # GET /tasks/1
   # GET /tasks/1.json
@@ -75,9 +97,9 @@ class TasksController < ApplicationController
     end
 
     if @task.update_attributes(params[:task])
-      redirect_to root_path
+      redirect_to filter_on_status_tasks_path("active")
     else
-      redirect_to show_path
+      redirect_to filter_on_status_tasks_path("active")
     end
   end
 
@@ -130,7 +152,7 @@ class TasksController < ApplicationController
       end
     end
   end
-  #
+
   # # DELETE /tasks/1
   # # DELETE /tasks/1.json
   # def destroy

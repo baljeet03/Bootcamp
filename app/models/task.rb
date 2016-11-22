@@ -6,6 +6,7 @@ class Task < ActiveRecord::Base
   validates :priority, presence: true
   validates_length_of :description, :maximum => 500, :allow_blank => false
 
+  has_one :notification
   def self.to_csv(options = {})
     CSV.generate(options) do |csv|
       csv << column_names
