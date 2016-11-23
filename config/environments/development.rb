@@ -41,10 +41,10 @@ Project::Application.configure do
 
   # ses setting for sending the mails
   config.action_mailer.smtp_settings = {
-      :address => "email-smtp.us-east-1.amazonaws.com",
+      :address => "",
       :port => 25,
-      :user_name => "AKIAJ6QVGDNZ3VLY66JA", #Your SMTP user
-      :password => "AiX26dnU0z4BQySxojYBdqcYH5m8M4V0DA2g79tQqVkP", #Your SMTP password
+      :user_name => = #Your SMTP user
+      :password => #Your SMTP password
       :authentication => :login,
       :enable_starttls_auto => true
   }
