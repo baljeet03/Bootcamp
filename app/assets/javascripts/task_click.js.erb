@@ -46,7 +46,7 @@ $(document).ready(function () {
 // on clicking on reminder pop-up show all the reminders
 $(document).ready(function () {
   if(window.location.pathname == "/"){
-    $(".gritter-item").click(function () {
+    $(".gritter-item :not(.gritter-close)").click(function () {
       window.location = "/notifications/show";
     });
   }
